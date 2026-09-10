@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Metehan Tırpan — Yapay Zeka Mühendisi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #131B24;
+    --bg-elev: #0F151C;
+    --line: rgba(237,231,214,0.10);
+    --line-strong: rgba(237,231,214,0.20);
+    --ink: #EDE7D6;
+    --ink-dim: rgba(237,231,214,0.64);
+    --ink-faint: rgba(237,231,214,0.42);
+    --gold: #BC9A65;
+    --serif: 'IBM Plex Serif', Georgia, serif;
+    --sans: 'IBM Plex Sans', -apple-system, 'Segoe UI', sans-serif;
+    --max: 700px;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  a{ color: inherit; }
+  p{ margin: 0; }
+  h1,h2,h3{ font-family: var(--serif); font-weight: 500; margin: 0; }
+  :focus-visible{ outline: 1px solid var(--gold); outline-offset: 4px; }
+
+  @keyframes fadeUp{ from{ opacity:0; transform: translateY(8px); } to{ opacity:1; transform:none; } }
+  .hero-inner > *{ animation: fadeUp .7s ease both; }
+  .hero-inner > *:nth-child(2){ animation-delay: .06s; }
+  .hero-inner > *:nth-child(3){ animation-delay: .12s; }
+  .hero-inner > *:nth-child(4){ animation-delay: .18s; }
+  .hero-inner > *:nth-child(5){ animation-delay: .24s; }
+  @media (prefers-reduced-motion: reduce){ .hero-inner > *{ animation: none; } }
+
+  /* ---------- header ---------- */
+  .site-header{
+    position: sticky; top: 0; z-index: 10;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 6vw;
+    background: linear-gradient(to bottom, var(--bg-elev) 65%, transparent);
+    backdrop-filter: blur(8px);
+  }
+  .mark{
+    font-family: var(--serif); font-size: 14px; font-style: italic;
+    border: 1px solid var(--gold); color: var(--gold);
+    padding: 4px 10px; text-decoration: none;
+  }
+  .site-header nav{ display:flex; gap: 24px; flex-wrap: wrap; }
+  .site-header nav a{
+    font-size: 13.5px; text-decoration: none; color: var(--ink-dim);
+    transition: color .15s ease;
+  }
+  .site-header nav a:hover{ color: var(--gold); }
+
+  /* ---------- section shell ---------- */
+  .section{
+    max-width: var(--max); margin: 0 auto;
+    padding: 80px 6vw; border-top: 1px solid var(--line);
+  }
+  .section h2{ font-size: 24px; margin-bottom: 30px; }
+
+  /* ---------- hero ---------- */
+  .hero{ border-top: none; padding-top: 128px; padding-bottom: 92px; }
+  .hero h1{ font-size: clamp(34px, 7vw, 52px); line-height: 1.08; }
+  .hero-role{ font-family: var(--serif); font-style: italic; font-size: 19px; color: var(--gold); margin-top: 12px; }
+  .hero-sub{ font-size: 15px; color: var(--ink-faint); margin-top: 4px; }
+  .hero-summary{ max-width: 50ch; margin-top: 26px; color: var(--ink-dim); font-size: 16px; }
+
+  .stat-row{ display:flex; gap: 36px; margin-top: 38px; flex-wrap: wrap; }
+  .stat{ padding-left: 18px; border-left: 1px solid var(--line-strong); }
+  .stat:first-child{ padding-left: 0; border-left: none; }
+  .stat .num{ font-family: var(--serif); font-size: 26px; color: var(--gold); display:block; }
+  .stat .label{ font-size: 12.5px; color: var(--ink-faint); margin-top: 3px; max-width: 16ch; }
+
+  .hero-actions{ display:flex; gap: 14px; margin-top: 40px; flex-wrap: wrap; }
+  .btn{
+    font-size: 14px; text-decoration: none; padding: 12px 20px;
+    border: 1px solid var(--line-strong); display: inline-block;
+    transition: border-color .15s ease, color .15s ease, background .15s ease, opacity .15s ease;
+  }
+  .btn-primary{ background: var(--gold); border-color: var(--gold); color: var(--bg-elev); }
+  .btn-primary:hover{ opacity: .88; }
+  .btn-ghost{ color: var(--ink-dim); }
+  .btn-ghost:hover{ border-color: var(--gold); color: var(--gold); }
+
+  /* ---------- about ---------- */
+  .about-text{ max-width: 58ch; color: var(--ink-dim); font-size: 16px; }
+  .about-text + .about-text{ margin-top: 14px; }
+
+  /* ---------- work ---------- */
+  .project{ border-left: 2px solid var(--gold); padding-left: 22px; margin-top: 40px; }
+  .project:first-of-type{ margin-top: 0; }
+  .project-head{ display:flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  .project h3{ font-size: 17px; color: var(--ink); max-width: 46ch; }
+  .project-date{ font-size: 12.5px; color: var(--ink-faint); white-space: nowrap; }
+  .project-bullets{ list-style: none; margin: 12px 0 0; padding: 0; }
+  .project-bullets li{
+    position: relative; padding-left: 16px; margin-top: 8px;
+    color: var(--ink-dim); font-size: 14.5px;
+  }
+  .project-bullets li::before{ content: "–"; position: absolute; left: 0; color: var(--gold); }
+  .project-stack{
+    font-size: 12.5px; color: var(--ink-faint); margin-top: 14px;
+  }
+
+  /* ---------- skills ---------- */
+  .spec-columns{ display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 30px 34px; }
+  .spec-group h3{ font-family: var(--sans); font-weight: 600; font-size: 14px; color: var(--gold); margin-bottom: 10px; }
+  .spec-group ul{ list-style: none; margin: 0; padding: 0; }
+  .spec-group li{
+    font-size: 14.5px; padding: 7px 0; border-bottom: 1px solid var(--line);
+    color: var(--ink-dim);
+  }
+  @media (max-width: 560px){ .spec-columns{ grid-template-columns: 1fr; } }
+
+  /* ---------- experience ---------- */
+  .timeline{ list-style: none; margin: 0; padding: 0; }
+  .timeline li{ padding: 0 0 34px; border-bottom: 1px solid var(--line); margin-bottom: 34px; }
+  .timeline li:last-child{ border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .tl-date{ font-size: 12.5px; color: var(--gold); }
+  .tl-role{ font-family: var(--serif); font-size: 17px; margin-top: 6px; }
+  .tl-org{ font-size: 13.5px; color: var(--ink-faint); margin-top: 2px; }
+  .tl-desc{ color: var(--ink-dim); font-size: 14.5px; margin-top: 10px; max-width: 52ch; }
+  .tl-desc + .tl-desc{ margin-top: 6px; }
+
+  /* ---------- contact ---------- */
+  .titleblock{ border: 1px solid var(--line-strong); margin-top: 4px; }
+  .tb-row{
+    display: flex; justify-content: space-between; gap: 16px;
+    padding: 14px 20px; border-bottom: 1px solid var(--line); font-size: 14.5px;
+  }
+  .tb-row:last-child{ border-bottom: none; }
+  .tb-row span{ font-size: 12px; color: var(--ink-faint); align-self: center; }
+  .tb-row strong, .tb-row a{ font-weight: 500; text-decoration: none; }
+  .tb-row a:hover{ color: var(--gold); }
+  #contact .btn{ margin-top: 26px; }
+
+  footer{
+    max-width: var(--max); margin: 0 auto; padding: 32px 6vw 64px;
+    font-size: 12px; color: var(--ink-faint);
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="mark" href="#top">MT</a>
+  <nav>
+    <a href="#about">Hakkımda</a>
+    <a href="#work">Projeler</a>
+    <a href="#stack">Yetenekler</a>
+    <a href="#experience">Deneyim</a>
+    <a href="#education">Eğitim</a>
+    <a href="#contact">İletişim</a>
+  </nav>
+</header>
+
+<main>
+
+  <section id="top" class="section hero">
+    <div class="hero-inner">
+      <h1>Metehan Tırpan</h1>
+      <p class="hero-role">Yapay Zeka Mühendisi</p>
+      <p class="hero-sub">Üretken yapay zeka ve otomasyon sistemleri üzerine çalışıyor.</p>
+      <p class="hero-summary">Sıfırdan geliştirilen yapay zeka sistemlerini no-code otomasyon platformlarına entegre ediyorum. Dört yıldan uzun süredir sistem ve otomasyon süreçleri üzerinde çalışıyor, üretken yapay zekayı bir araçtan öte, projelerimde bir ekip arkadaşı gibi kullanıyorum.</p>
+      <div class="stat-row">
+        <div class="stat"><span class="num">3×</span><span class="label">daha hızlı dokümantasyon süresi</span></div>
+        <div class="stat"><span class="num">%85</span><span class="label">görsel doğrulama doğruluğu</span></div>
+        <div class="stat"><span class="num">0.81</span><span class="label">NDCG öneri skoru</span></div>
+      </div>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#work">Projelere göz at</a>
+        <a class="btn btn-ghost" href="#contact">İletişime geç</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="section">
+    <h2>Hakkımda</h2>
+    <p class="about-text">Yapay zeka ve otomasyon mühendisi olarak, sıfırdan geliştirilen sistemlerin no-code platformlara entegrasyonunu ve uygulanmasını sağlıyorum. Dört yıldan uzun süredir sistem süreçleri ve otomasyon sistemleri üzerinde çalışıyorum.</p>
+    <p class="about-text">Yapay zekayı sadece bir araç olarak değil, günlük projelerimde bir ekip arkadaşı gibi kullanıyorum. Hedefim bu alanda uzmanlaşıp kendi otomasyon sistemimi kurabileceğim bir alan açmak. Şu anda küçük bir startup projesinde FastAPI kullanarak haberleşme ve uydu sistemi tasarlıyorum.</p>
+  </section>
+
+  <section id="work" class="section">
+    <h2>Öne Çıkan AI ve Otomasyon Projeleri</h2>
+
+    <article class="project">
+      <div class="project-head">
+        <h3>Yapay Zeka Destekli Teklif ve Sunum Otomasyon Motoru</h3>
+        <span class="project-date">2026</span>
+      </div>
+      <ul class="project-bullets">
+        <li>Müşteri brief'lerinden dinamik olarak yapılandırılmış proje teklifi, bütçe taslağı ve slayt içeriği üreten sistematik prompt şablonları geliştirildi.</li>
+        <li>Ham veriler JSON formatında yapılandırılıp sunum modüllerine aktarıldı; operasyon ekiplerinin dokümantasyon süresi 3 kat hızlandırıldı.</li>
+      </ul>
+      <p class="project-stack">ChatGPT / Gemini · Notion AI · Python</p>
+    </article>
+
+    <article class="project">
+      <div class="project-head">
+        <h3>Yapay Zeka Destekli Uydu ve Haberleşme Sistemi</h3>
+        <span class="project-date">2026</span>
+      </div>
+      <ul class="project-bullets">
+        <li>Gerçek uydu verilerini dinamik olarak kullanan bir sistem; FastAPI aracılığıyla NASA uzay istasyonuna bağlanıp canlı olarak uyduların takip ve kontrolünü yapıyor.</li>
+        <li>Arka planda Kubernetes ve Docker entegrasyonuyla çalışıyor, verileri SQL bağlantısı üzerinden işliyor.</li>
+      </ul>
+      <p class="project-stack">FastAPI · Python · PyJWT · skyfield</p>
+    </article>
+
+    <article class="project">
+      <div class="project-head">
+        <h3>MoodMirror: LLM ve Semantik Anlatım Öneri Motoru</h3>
+        <span class="project-date">2025 — 2026</span>
+      </div>
+      <ul class="project-bullets">
+        <li>Kullanıcı duygu durumu ve beklentilerini semantik olarak eşleyen LLM/vektör tabanlı bir öneri ve içerik keşif mimarisi inşa edildi.</li>
+        <li>Cold-start sorununu aşmak için hibrit mimari geliştirildi; NDCG 0.81 ve mAP 0.74 başarı oranına ulaşıldı.</li>
+      </ul>
+      <p class="project-stack">Python · BERT / SBERT · NLP · Cosine Similarity</p>
+    </article>
+
+    <article class="project">
+      <div class="project-head">
+        <h3>DeepFake ve Sentetik Görsel Kalite Analiz Sistemi</h3>
+        <span class="project-date">2025</span>
+      </div>
+      <ul class="project-bullets">
+        <li>Üretken yapay zeka görsel modellerinden (Midjourney, DALL-E) çıkan sentetik içeriklerin piksel ve frekans tutarlılıklarını denetleyen bir sistem kuruldu.</li>
+        <li>Görsel filtreleme ve artifact tespiti ile kreatif çıktıların doğrulama süreçlerinde %85 doğruluk skoru sağlandı.</li>
+      </ul>
+      <p class="project-stack">Python · OpenCV · Görsel İşleme</p>
+    </article>
+
+  </section>
+
+  <section id="stack" class="section">
+    <h2>Yetkinlikler ve Araçlar</h2>
+    <div class="spec-columns">
+      <div class="spec-group">
+        <h3>Üretken AI araçları</h3>
+        <ul>
+          <li>ChatGPT, Claude, Gemini</li>
+          <li>Midjourney, Runway, Kling, Pika</li>
+          <li>Notion AI</li>
+        </ul>
+      </div>
+      <div class="spec-group">
+        <h3>Prompt ve çıktı mühendisliği</h3>
+        <ul>
+          <li>İleri düzey prompt tasarımı (Few-Shot, CoT, Rol Odaklı)</li>
+          <li>Upscaling, Inpainting / Outpainting</li>
+          <li>Görsel tutarlılık</li>
+        </ul>
+      </div>
+      <div class="spec-group">
+        <h3>Otomasyon ve no-code</h3>
+        <ul>
+          <li>n8n, Airtable</li>
+          <li>Webhooks, REST API</li>
+          <li>FastAPI</li>
+        </ul>
+      </div>
+      <div class="spec-group">
+        <h3>Yazılım ve veri akışı</h3>
+        <ul>
+          <li>Python (API ve veri ayrıştırma betikleri)</li>
+          <li>JSON yapılandırma</li>
+          <li>Git / GitHub, prompt scripting</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience" class="section">
+    <h2>İş Deneyimi ve Mühendislik Geçmişi</h2>
+    <ol class="timeline">
+      <li>
+        <p class="tl-date">2025 — Günümüz</p>
+        <p class="tl-role">Sistem ve Süreç Mühendisi &amp; Yapay Zeka Mühendisi</p>
+        <p class="tl-org">Mopplsia</p>
+        <p class="tl-desc">Çevik (Agile/Scrum) çalışma ortamında operasyonel süreçlerin takibini ve teknik iş akışlarının dokümantasyonunu yönetti.</p>
+        <p class="tl-desc">Şirket içi bilgi bankası oluşturma ve raporlama adımlarında LLM tabanlı otomatik özetleme sistemlerini devreye aldı.</p>
+      </li>
+      <li>
+        <p class="tl-date">2025</p>
+        <p class="tl-role">Yazılım ve Entegrasyon Mühendisi</p>
+        <p class="tl-org">ArcVerda</p>
+        <p class="tl-desc">Peyzaj ve tasarım projelerinde iş akışı verimliliğini artırmak amacıyla yapay zeka araçları ve algoritmik sistem entegrasyonları gerçekleştirdi.</p>
+        <p class="tl-desc">Tasarım ve teknik operasyon ekipleri arasında köprü kurarak standartlara uygun doğrulama ve süreç iyileştirmesi sağladı.</p>
+      </li>
+      <li>
+        <p class="tl-date">2024 — 2025</p>
+        <p class="tl-role">Yapay Zeka ve Görüntü Analitiği Lideri</p>
+        <p class="tl-org">TEKNOFEST Proje Takımları</p>
+        <p class="tl-desc">Gerçek zamanlı nesne tespiti, görsel veri akışları ve telemetri ayrıştırma (JSON/UART) süreçlerini optimize etti.</p>
+        <p class="tl-desc">Sistemik sorun çözme, yüksek tempolu yarışma teslimleri ve teknik sunum süreçlerini başarıyla yönetti.</p>
+      </li>
+    </ol>
+  </section>
+
+  <section id="education" class="section">
+    <h2>Eğitim ve Yabancı Dil</h2>
+    <div class="spec-columns">
+      <div class="spec-group">
+        <h3>Eğitim</h3>
+        <ul>
+          <li>Kırıkkale Üniversitesi</li>
+          <li>Elektrik ve Elektronik Mühendisliği — Lisans</li>
+        </ul>
+      </div>
+      <div class="spec-group">
+        <h3>Yabancı diller</h3>
+        <ul>
+          <li>İngilizce — İleri Seviye</li>
+          <li>Almanca — Başlangıç</li>
+          <li>Fransızca — Başlangıç</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section">
+    <h2>İletişim</h2>
+    <div class="titleblock">
+      <div class="tb-row"><span>İsim</span><strong>Metehan Tırpan</strong></div>
+      <div class="tb-row"><span>Rol</span><strong>Yapay Zeka Mühendisi</strong></div>
+      <div class="tb-row"><span>E-posta</span><a href="mailto:metehantirpan@gmail.com">metehantirpan@gmail.com</a></div>
+      <div class="tb-row"><span>Telefon</span><a href="tel:+905350848426">+90 535 084 8426</a></div>
+      <div class="tb-row"><span>GitHub</span><a href="https://github.com/black131" target="_blank" rel="noopener">github.com/black131</a></div>
+      <div class="tb-row"><span>Konum</span><strong>Ankara, Türkiye</strong></div>
+      <div class="tb-row"><span>Durum</span><strong>Yeni projelere açık</strong></div>
+    </div>
+    <a class="btn btn-primary" href="mailto:metehantirpan@gmail.com">E-posta gönder</a>
+  </section>
+
+</main>
+
+<footer>
+  <span>© 2026 Metehan Tırpan</span>
+  <span>Ankara, Türkiye</span>
+</footer>
+
+</body>
+</html>
