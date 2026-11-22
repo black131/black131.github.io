@@ -3,7 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Metehan Tırpan — Yapay Zeka Mühendisi</title>
+<title>Metehan Tırpan — Yapay Zeka ve Makine Öğrenmesi Mühendisi</title>
+<meta name="description" content="Elektrik-Elektronik Mühendisi ve AI/ML Mühendisi. LLM, RAG, derin öğrenme ve gömülü sistemler üzerine projeler.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Metehan Tırpan — AI/ML Mühendisi">
+<meta property="og:description" content="LLM, RAG, derin öğrenme ve gömülü sistemler. Projeler, deneyim ve iletişim.">
+<meta property="og:url" content="https://black131.github.io/">
+<meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -117,6 +123,15 @@
     font-size: 12.5px; color: var(--ink-faint); margin-top: 14px;
   }
 
+  .project-links{ display:flex; gap: 16px; flex-wrap: wrap; margin-top: 12px; }
+  .project-links a{ font-size: 13px; color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--line-strong); }
+  .project-links a:hover{ border-bottom-color: var(--gold); }
+  .repo-list{ list-style: none; margin: 0; padding: 0; }
+  .repo-list li{ padding: 12px 0; border-bottom: 1px solid var(--line); color: var(--ink-dim); font-size: 14.5px; }
+  .repo-list a{ color: var(--ink); text-decoration: none; font-weight: 500; }
+  .repo-list a:hover{ color: var(--gold); }
+  .sub-h{ font-family: var(--serif); font-size: 18px; margin: 56px 0 14px; }
+
   /* ---------- skills ---------- */
   .spec-columns{ display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 30px 34px; }
   .spec-group h3{ font-family: var(--sans); font-weight: 600; font-size: 14px; color: var(--gold); margin-bottom: 10px; }
@@ -175,15 +190,15 @@
   <section id="top" class="section hero">
     <div class="hero-inner">
       <h1>Metehan Tırpan</h1>
-      <p class="hero-role">Yapay Zeka Mühendisi</p>
-      <p class="hero-sub">Üretken yapay zeka ve otomasyon sistemleri üzerine çalışıyor.</p>
-      <p class="hero-summary">Sıfırdan geliştirilen yapay zeka sistemlerini no-code otomasyon platformlarına entegre ediyorum. Dört yıldan uzun süredir sistem ve otomasyon süreçleri üzerinde çalışıyor, üretken yapay zekayı bir araçtan öte, projelerimde bir ekip arkadaşı gibi kullanıyorum.</p>
+      <p class="hero-role">Yapay Zeka ve Makine Öğrenmesi Mühendisi</p>
+      <p class="hero-sub">Elektrik-Elektronik Mühendisi · LLM, RAG ve derin öğrenme</p>
+      <p class="hero-summary">Elektrik-Elektronik Mühendisliği temelinden gelen, LLM tabanlı sistemler, derin öğrenme ve zaman serisi tahminleri geliştiren bir mühendisim. Modelleri yalnızca eğitmekle kalmıyor; FastAPI, Docker ve bulut LLM API'leriyle çalışan, test edilmiş ürünlere dönüştürüyorum.</p>
       <div class="stat-row">
-        <div class="stat"><span class="num">3×</span><span class="label">daha hızlı dokümantasyon süresi</span></div>
-        <div class="stat"><span class="num">%85</span><span class="label">görsel doğrulama doğruluğu</span></div>
-        <div class="stat"><span class="num">0.81</span><span class="label">NDCG öneri skoru</span></div>
+        <div class="stat"><span class="num">8.</span><span class="label">Freya × Y Combinator hackathonu, 1.200 takım içinde</span></div>
+        <div class="stat"><span class="num">0.81</span><span class="label">MoodMirror öneri sistemi NDCG skoru</span></div>
+        <div class="stat"><span class="num">%99</span><span class="label">hibrit DeepFake tespit modeli doğruluğu</span></div>
       </div>
-      <div class="hero-actions">
+      
         <a class="btn btn-primary" href="#work">Projelere göz at</a>
         <a class="btn btn-ghost" href="#contact">İletişime geç</a>
       </div>
@@ -192,12 +207,64 @@
 
   <section id="about" class="section">
     <h2>Hakkımda</h2>
-    <p class="about-text">Yapay zeka ve otomasyon mühendisi olarak, sıfırdan geliştirilen sistemlerin no-code platformlara entegrasyonunu ve uygulanmasını sağlıyorum. Dört yıldan uzun süredir sistem süreçleri ve otomasyon sistemleri üzerinde çalışıyorum.</p>
-    <p class="about-text">Yapay zekayı sadece bir araç olarak değil, günlük projelerimde bir ekip arkadaşı gibi kullanıyorum. Hedefim bu alanda uzmanlaşıp kendi otomasyon sistemimi kurabileceğim bir alan açmak. Şu anda küçük bir startup projesinde FastAPI kullanarak haberleşme ve uydu sistemi tasarlıyorum.</p>
+    <p class="about-text">Elektrik-Elektronik Mühendisliği mezunuyum; yazılımla donanımın kesiştiği yerde çalışmayı seviyorum. Bir yanda LLM, RAG ve derin öğrenme sistemleri, diğer yanda ESP32 ve STM32 tabanlı gömülü sistemler ve TEKNOFEST model uydu ile SİHA takımlarındaki deneyimim var.</p>
+    <p class="about-text">Şu anda bir startup'ta AI/ML Mühendisi olarak çalışıyorum. TÜBİTAK 2209 destekli elektrikli araç şarj ağı projemde LSTM ve XGBoost ile talep tahmini yapıyorum; bu çalışma uluslararası bir konferansta kabul edildi. Sentetik veri, LLM ajanları ve üretim ortamına çıkabilen yapay zeka sistemleri üzerinde çalışmaya devam ediyorum.</p>
   </section>
 
   <section id="work" class="section">
-    <h2>Öne Çıkan AI ve Otomasyon Projeleri</h2>
+    <h2>Öne Çıkan Projeler</h2>
+
+    <article class="project">
+      <div class="project-head">
+        <h3>Elektrikli Araç Şarj Ağı için LSTM-XGBoost Talep Tahmini</h3>
+        <span class="project-date">2026</span>
+      </div>
+      <ul class="project-bullets">
+        <li>TÜBİTAK 2209 kapsamında, şarj istasyonu ağlarında kısa vadeli talep tahmini ve dinamik fiyatlandırma için LSTM ve XGBoost'u birleştiren hibrit bir model geliştirildi.</li>
+        <li>Shenzhen şarj verisi üzerinde doluluk, hacim, süre, fiyat, komşu bölge ve hava durumu özellikleriyle diğer modellerle karşılaştırmalı testler yapıldı; çalışma uluslararası bir konferansta kabul edildi.</li>
+      </ul>
+      <p class="project-stack">Python · LSTM · XGBoost · Zaman Serisi · Özellik Mühendisliği</p>
+      <div class="project-links"><a href="https://github.com/black131/lstm-xgb-ev-predictor" target="_blank" rel="noopener">GitHub deposu</a></div>
+    </article>
+
+    <article class="project">
+      <div class="project-head">
+        <h3>Sesli Bankacılık Asistanı — Freya × Y Combinator "Build the Builder"</h3>
+        <span class="project-date">Ekim 2026</span>
+      </div>
+      <ul class="project-bullets">
+        <li>Bir bankanın brief'inden sesli telefon ajanı üreten bir "builder" geliştirildi; ajan 120 testte 71,4 puan aldı ve 1.200 takım arasında 8. oldu.</li>
+        <li>Asistan LangChain ve farklı LLM modelleriyle test edildi, JWT erişim kontrolüyle güvence altına alınarak yayına alındı.</li>
+      </ul>
+      <p class="project-stack">Python · LangChain · LLM · Sesli Ajan · JWT</p>
+      <div class="project-links"><a href="https://github.com/black131/freya_hachaton_build_the_builder" target="_blank" rel="noopener">GitHub deposu</a></div>
+    </article>
+
+    <article class="project">
+      <div class="project-head">
+        <h3>MoodMirror: LLM ve Semantik Anlatım Öneri Motoru</h3>
+        <span class="project-date">2025 — 2026</span>
+      </div>
+      <ul class="project-bullets">
+        <li>SBERT ve kosinüs benzerliğiyle kullanıcının duygu durumunu anlayıp ona uygun anime öneren bir NLP öneri sistemi kuruldu.</li>
+        <li>Cold-start sorununu aşmak için hibrit mimari geliştirildi; NDCG 0,81 ve mAP 0,74 başarı oranına ulaşıldı.</li>
+      </ul>
+      <p class="project-stack">Python · BERT / SBERT · NLP · Cosine Similarity</p>
+      <div class="project-links"><a href="https://github.com/black131/Semantic-Similarity-Analysis-Using-BERT-Based-Models" target="_blank" rel="noopener">GitHub deposu</a></div>
+    </article>
+
+    <article class="project">
+      <div class="project-head">
+        <h3>Hibrit Derin Öğrenme ile DeepFake Tespiti</h3>
+        <span class="project-date">2025</span>
+      </div>
+      <ul class="project-bullets">
+        <li>Yapay zeka ve insan yapımı görselleri ayırt etmek için ResNet50, Swin Transformer ve Xception modelleri birleştirilerek yeni bir hibrit model oluşturuldu.</li>
+        <li>Model %99 doğruluk ve 1 F1 skoru elde etti.</li>
+      </ul>
+      <p class="project-stack">Python · ResNet50 · Swin Transformer · Xception · Görüntü Sınıflandırma</p>
+      <div class="project-links"><a href="https://github.com/black131/DeepFake-Tespiti" target="_blank" rel="noopener">GitHub deposu</a></div>
+    </article>
 
     <article class="project">
       <div class="project-head">
@@ -211,77 +278,57 @@
       <p class="project-stack">ChatGPT / Gemini · Notion AI · Python</p>
     </article>
 
-    <article class="project">
-      <div class="project-head">
-        <h3>Yapay Zeka Destekli Uydu ve Haberleşme Sistemi</h3>
-        <span class="project-date">2026</span>
-      </div>
-      <ul class="project-bullets">
-        <li>Gerçek uydu verilerini dinamik olarak kullanan bir sistem; FastAPI aracılığıyla NASA uzay istasyonuna bağlanıp canlı olarak uyduların takip ve kontrolünü yapıyor.</li>
-        <li>Arka planda Kubernetes ve Docker entegrasyonuyla çalışıyor, verileri SQL bağlantısı üzerinden işliyor.</li>
-      </ul>
-      <p class="project-stack">FastAPI · Python · PyJWT · skyfield</p>
-    </article>
-
-    <article class="project">
-      <div class="project-head">
-        <h3>MoodMirror: LLM ve Semantik Anlatım Öneri Motoru</h3>
-        <span class="project-date">2025 — 2026</span>
-      </div>
-      <ul class="project-bullets">
-        <li>Kullanıcı duygu durumu ve beklentilerini semantik olarak eşleyen LLM/vektör tabanlı bir öneri ve içerik keşif mimarisi inşa edildi.</li>
-        <li>Cold-start sorununu aşmak için hibrit mimari geliştirildi; NDCG 0.81 ve mAP 0.74 başarı oranına ulaşıldı.</li>
-      </ul>
-      <p class="project-stack">Python · BERT / SBERT · NLP · Cosine Similarity</p>
-    </article>
-
-    <article class="project">
-      <div class="project-head">
-        <h3>DeepFake ve Sentetik Görsel Kalite Analiz Sistemi</h3>
-        <span class="project-date">2025</span>
-      </div>
-      <ul class="project-bullets">
-        <li>Üretken yapay zeka görsel modellerinden (Midjourney, DALL-E) çıkan sentetik içeriklerin piksel ve frekans tutarlılıklarını denetleyen bir sistem kuruldu.</li>
-        <li>Görsel filtreleme ve artifact tespiti ile kreatif çıktıların doğrulama süreçlerinde %85 doğruluk skoru sağlandı.</li>
-      </ul>
-      <p class="project-stack">Python · OpenCV · Görsel İşleme</p>
-    </article>
-
+    <h3 class="sub-h">Diğer GitHub projeleri</h3>
+    <ul class="repo-list">
+      <li><a href="https://github.com/black131/LLM-Projects" target="_blank" rel="noopener">LLM-Projects</a> — Torch ve CUDA ile araba markalarını analiz eden LLM projesi, %85 doğruluk.</li>
+      <li><a href="https://github.com/black131/Deep_Learning_Projects" target="_blank" rel="noopener">Deep_Learning_Projects</a> — Transfer Learning, CNN, RNN, nesne takibi ve stil aktarımı çalışmaları.</li>
+      <li><a href="https://github.com/black131/Pv-Battery-Systems-Optimization" target="_blank" rel="noopener">Pv-Battery-Systems-Optimization</a> — Yapay Arı Kolonisi algoritmasıyla PV-rüzgar-batarya sisteminin optimal boyutlandırılması (MATLAB).</li>
+      <li><a href="https://github.com/black131/Machine_Learning_Project" target="_blank" rel="noopener">Machine_Learning_Project</a> — Makine öğrenmesi ile geliştirilen uygulamalı proje.</li>
+      <li><a href="https://github.com/black131/C-ile-yapay-zeka-projeleri" target="_blank" rel="noopener">C-ile-yapay-zeka-projeleri</a> — C++ ile geliştirilen evrişimli sinir ağı projesi.</li>
+    </ul>
   </section>
 
   <section id="stack" class="section">
     <h2>Yetkinlikler ve Araçlar</h2>
     <div class="spec-columns">
       <div class="spec-group">
+        <h3>Yapay zeka ve makine öğrenmesi</h3>
+        <ul>
+          <li>PyTorch, CUDA, BERT / SBERT, CNN, LSTM</li>
+          <li>XGBoost, zaman serisi tahmini, anomali tespiti</li>
+          <li>Sentetik veri çalışmaları</li>
+        </ul>
+      </div>
+      <div class="spec-group">
+        <h3>LLM ve ajan sistemleri</h3>
+        <ul>
+          <li>RAG, embedding ve vektör veritabanı</li>
+          <li>LangChain, bulut LLM API'leri</li>
+          <li>İleri düzey prompt tasarımı (Few-Shot, CoT, Rol Odaklı)</li>
+        </ul>
+      </div>
+      <div class="spec-group">
+        <h3>Backend ve otomasyon</h3>
+        <ul>
+          <li>Python, FastAPI, REST API, JWT</li>
+          <li>Docker, Git / GitHub</li>
+          <li>n8n, Airtable, Webhooks</li>
+        </ul>
+      </div>
+      <div class="spec-group">
+        <h3>Gömülü sistemler ve donanım</h3>
+        <ul>
+          <li>ESP32, STM32F407</li>
+          <li>KiCad, Altium ile devre ve PCB tasarımı</li>
+          <li>Telemetri ayrıştırma (JSON / UART)</li>
+        </ul>
+      </div>
+      <div class="spec-group">
         <h3>Üretken AI araçları</h3>
         <ul>
           <li>ChatGPT, Claude, Gemini</li>
           <li>Midjourney, Runway, Kling, Pika</li>
           <li>Notion AI</li>
-        </ul>
-      </div>
-      <div class="spec-group">
-        <h3>Prompt ve çıktı mühendisliği</h3>
-        <ul>
-          <li>İleri düzey prompt tasarımı (Few-Shot, CoT, Rol Odaklı)</li>
-          <li>Upscaling, Inpainting / Outpainting</li>
-          <li>Görsel tutarlılık</li>
-        </ul>
-      </div>
-      <div class="spec-group">
-        <h3>Otomasyon ve no-code</h3>
-        <ul>
-          <li>n8n, Airtable</li>
-          <li>Webhooks, REST API</li>
-          <li>FastAPI</li>
-        </ul>
-      </div>
-      <div class="spec-group">
-        <h3>Yazılım ve veri akışı</h3>
-        <ul>
-          <li>Python (API ve veri ayrıştırma betikleri)</li>
-          <li>JSON yapılandırma</li>
-          <li>Git / GitHub, prompt scripting</li>
         </ul>
       </div>
     </div>
@@ -292,7 +339,7 @@
     <ol class="timeline">
       <li>
         <p class="tl-date">2025 — Günümüz</p>
-        <p class="tl-role">Sistem ve Süreç Mühendisi &amp; Yapay Zeka Mühendisi</p>
+        <p class="tl-role">Yapay Zeka ve Makine Öğrenmesi Mühendisi</p>
         <p class="tl-org">Mopplsia</p>
         <p class="tl-desc">Çevik (Agile/Scrum) çalışma ortamında operasyonel süreçlerin takibini ve teknik iş akışlarının dokümantasyonunu yönetti.</p>
         <p class="tl-desc">Şirket içi bilgi bankası oluşturma ve raporlama adımlarında LLM tabanlı otomatik özetleme sistemlerini devreye aldı.</p>
@@ -308,7 +355,7 @@
         <p class="tl-date">2024 — 2025</p>
         <p class="tl-role">Yapay Zeka ve Görüntü Analitiği Lideri</p>
         <p class="tl-org">TEKNOFEST Proje Takımları</p>
-        <p class="tl-desc">Gerçek zamanlı nesne tespiti, görsel veri akışları ve telemetri ayrıştırma (JSON/UART) süreçlerini optimize etti.</p>
+        <p class="tl-desc">Model uydu ve SİHA takımlarında gerçek zamanlı nesne tespiti, görsel veri akışları ve telemetri ayrıştırma (JSON/UART) süreçlerini optimize etti.</p>
         <p class="tl-desc">Sistemik sorun çözme, yüksek tempolu yarışma teslimleri ve teknik sunum süreçlerini başarıyla yönetti.</p>
       </li>
     </ol>
@@ -344,7 +391,7 @@
       <div class="tb-row"><span>Telefon</span><a href="tel:+905350848426">+90 535 084 8426</a></div>
       <div class="tb-row"><span>GitHub</span><a href="https://github.com/black131" target="_blank" rel="noopener">github.com/black131</a></div>
       <div class="tb-row"><span>Konum</span><strong>Ankara, Türkiye</strong></div>
-      <div class="tb-row"><span>Durum</span><strong>Yeni projelere açık</strong></div>
+      <div class="tb-row"><span>Durum</span><strong>Yeni fırsatlara açık</strong></div>
     </div>
     <a class="btn btn-primary" href="mailto:metehantirpan@gmail.com">E-posta gönder</a>
   </section>
