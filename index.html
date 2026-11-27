@@ -1,407 +1,232 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Metehan Tırpan — Yapay Zeka ve Makine Öğrenmesi Mühendisi</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Metehan Tırpan – Yapay Zeka ve Makine Öğrenmesi Mühendisi</title>
 <meta name="description" content="Elektrik-Elektronik Mühendisi ve AI/ML Mühendisi. LLM, RAG, derin öğrenme ve gömülü sistemler üzerine projeler.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Metehan Tırpan — AI/ML Mühendisi">
+<meta property="og:title" content="Metehan Tırpan – AI/ML Mühendisi">
 <meta property="og:description" content="LLM, RAG, derin öğrenme ve gömülü sistemler. Projeler, deneyim ve iletişim.">
+<meta property="og:type" content="website">
 <meta property="og:url" content="https://black131.github.io/">
-<meta name="twitter:card" content="summary">
+<meta name="color-scheme" content="light dark">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg: #131B24;
-    --bg-elev: #0F151C;
-    --line: rgba(237,231,214,0.10);
-    --line-strong: rgba(237,231,214,0.20);
-    --ink: #EDE7D6;
-    --ink-dim: rgba(237,231,214,0.64);
-    --ink-faint: rgba(237,231,214,0.42);
-    --gold: #BC9A65;
-    --serif: 'IBM Plex Serif', Georgia, serif;
-    --sans: 'IBM Plex Sans', -apple-system, 'Segoe UI', sans-serif;
-    --max: 700px;
-  }
-
-  *{ box-sizing: border-box; }
-  html{ scroll-behavior: smooth; }
-  body{
-    margin:0;
-    background: var(--bg);
-    color: var(--ink);
-    font-family: var(--sans);
-    font-size: 16px;
-    line-height: 1.65;
-    -webkit-font-smoothing: antialiased;
-  }
-  a{ color: inherit; }
-  p{ margin: 0; }
-  h1,h2,h3{ font-family: var(--serif); font-weight: 500; margin: 0; }
-  :focus-visible{ outline: 1px solid var(--gold); outline-offset: 4px; }
-
-  @keyframes fadeUp{ from{ opacity:0; transform: translateY(8px); } to{ opacity:1; transform:none; } }
-  .hero-inner > *{ animation: fadeUp .7s ease both; }
-  .hero-inner > *:nth-child(2){ animation-delay: .06s; }
-  .hero-inner > *:nth-child(3){ animation-delay: .12s; }
-  .hero-inner > *:nth-child(4){ animation-delay: .18s; }
-  .hero-inner > *:nth-child(5){ animation-delay: .24s; }
-  @media (prefers-reduced-motion: reduce){ .hero-inner > *{ animation: none; } }
-
-  /* ---------- header ---------- */
-  .site-header{
-    position: sticky; top: 0; z-index: 10;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 20px 6vw;
-    background: linear-gradient(to bottom, var(--bg-elev) 65%, transparent);
-    backdrop-filter: blur(8px);
-  }
-  .mark{
-    font-family: var(--serif); font-size: 14px; font-style: italic;
-    border: 1px solid var(--gold); color: var(--gold);
-    padding: 4px 10px; text-decoration: none;
-  }
-  .site-header nav{ display:flex; gap: 24px; flex-wrap: wrap; }
-  .site-header nav a{
-    font-size: 13.5px; text-decoration: none; color: var(--ink-dim);
-    transition: color .15s ease;
-  }
-  .site-header nav a:hover{ color: var(--gold); }
-
-  /* ---------- section shell ---------- */
-  .section{
-    max-width: var(--max); margin: 0 auto;
-    padding: 80px 6vw; border-top: 1px solid var(--line);
-  }
-  .section h2{ font-size: 24px; margin-bottom: 30px; }
-
-  /* ---------- hero ---------- */
-  .hero{ border-top: none; padding-top: 128px; padding-bottom: 92px; }
-  .hero h1{ font-size: clamp(34px, 7vw, 52px); line-height: 1.08; }
-  .hero-role{ font-family: var(--serif); font-style: italic; font-size: 19px; color: var(--gold); margin-top: 12px; }
-  .hero-sub{ font-size: 15px; color: var(--ink-faint); margin-top: 4px; }
-  .hero-summary{ max-width: 50ch; margin-top: 26px; color: var(--ink-dim); font-size: 16px; }
-
-  .stat-row{ display:flex; gap: 36px; margin-top: 38px; flex-wrap: wrap; }
-  .stat{ padding-left: 18px; border-left: 1px solid var(--line-strong); }
-  .stat:first-child{ padding-left: 0; border-left: none; }
-  .stat .num{ font-family: var(--serif); font-size: 26px; color: var(--gold); display:block; }
-  .stat .label{ font-size: 12.5px; color: var(--ink-faint); margin-top: 3px; max-width: 16ch; }
-
-  .hero-actions{ display:flex; gap: 14px; margin-top: 40px; flex-wrap: wrap; }
-  .btn{
-    font-size: 14px; text-decoration: none; padding: 12px 20px;
-    border: 1px solid var(--line-strong); display: inline-block;
-    transition: border-color .15s ease, color .15s ease, background .15s ease, opacity .15s ease;
-  }
-  .btn-primary{ background: var(--gold); border-color: var(--gold); color: var(--bg-elev); }
-  .btn-primary:hover{ opacity: .88; }
-  .btn-ghost{ color: var(--ink-dim); }
-  .btn-ghost:hover{ border-color: var(--gold); color: var(--gold); }
-
-  /* ---------- about ---------- */
-  .about-text{ max-width: 58ch; color: var(--ink-dim); font-size: 16px; }
-  .about-text + .about-text{ margin-top: 14px; }
-
-  /* ---------- work ---------- */
-  .project{ border-left: 2px solid var(--gold); padding-left: 22px; margin-top: 40px; }
-  .project:first-of-type{ margin-top: 0; }
-  .project-head{ display:flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
-  .project h3{ font-size: 17px; color: var(--ink); max-width: 46ch; }
-  .project-date{ font-size: 12.5px; color: var(--ink-faint); white-space: nowrap; }
-  .project-bullets{ list-style: none; margin: 12px 0 0; padding: 0; }
-  .project-bullets li{
-    position: relative; padding-left: 16px; margin-top: 8px;
-    color: var(--ink-dim); font-size: 14.5px;
-  }
-  .project-bullets li::before{ content: "–"; position: absolute; left: 0; color: var(--gold); }
-  .project-stack{
-    font-size: 12.5px; color: var(--ink-faint); margin-top: 14px;
-  }
-
-  .project-links{ display:flex; gap: 16px; flex-wrap: wrap; margin-top: 12px; }
-  .project-links a{ font-size: 13px; color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--line-strong); }
-  .project-links a:hover{ border-bottom-color: var(--gold); }
-  .repo-list{ list-style: none; margin: 0; padding: 0; }
-  .repo-list li{ padding: 12px 0; border-bottom: 1px solid var(--line); color: var(--ink-dim); font-size: 14.5px; }
-  .repo-list a{ color: var(--ink); text-decoration: none; font-weight: 500; }
-  .repo-list a:hover{ color: var(--gold); }
-  .sub-h{ font-family: var(--serif); font-size: 18px; margin: 56px 0 14px; }
-
-  /* ---------- skills ---------- */
-  .spec-columns{ display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 30px 34px; }
-  .spec-group h3{ font-family: var(--sans); font-weight: 600; font-size: 14px; color: var(--gold); margin-bottom: 10px; }
-  .spec-group ul{ list-style: none; margin: 0; padding: 0; }
-  .spec-group li{
-    font-size: 14.5px; padding: 7px 0; border-bottom: 1px solid var(--line);
-    color: var(--ink-dim);
-  }
-  @media (max-width: 560px){ .spec-columns{ grid-template-columns: 1fr; } }
-
-  /* ---------- experience ---------- */
-  .timeline{ list-style: none; margin: 0; padding: 0; }
-  .timeline li{ padding: 0 0 34px; border-bottom: 1px solid var(--line); margin-bottom: 34px; }
-  .timeline li:last-child{ border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-  .tl-date{ font-size: 12.5px; color: var(--gold); }
-  .tl-role{ font-family: var(--serif); font-size: 17px; margin-top: 6px; }
-  .tl-org{ font-size: 13.5px; color: var(--ink-faint); margin-top: 2px; }
-  .tl-desc{ color: var(--ink-dim); font-size: 14.5px; margin-top: 10px; max-width: 52ch; }
-  .tl-desc + .tl-desc{ margin-top: 6px; }
-
-  /* ---------- contact ---------- */
-  .titleblock{ border: 1px solid var(--line-strong); margin-top: 4px; }
-  .tb-row{
-    display: flex; justify-content: space-between; gap: 16px;
-    padding: 14px 20px; border-bottom: 1px solid var(--line); font-size: 14.5px;
-  }
-  .tb-row:last-child{ border-bottom: none; }
-  .tb-row span{ font-size: 12px; color: var(--ink-faint); align-self: center; }
-  .tb-row strong, .tb-row a{ font-weight: 500; text-decoration: none; }
-  .tb-row a:hover{ color: var(--gold); }
-  #contact .btn{ margin-top: 26px; }
-
-  footer{
-    max-width: var(--max); margin: 0 auto; padding: 32px 6vw 64px;
-    font-size: 12px; color: var(--ink-faint);
-    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
-  }
+:root{--bg:#f4f6f9;--surface:#fff;--ink:#0f1b2d;--muted:#566377;--line:#dbe1ea;--accent:#1f4fe0;--accent-ink:#fff;--chip:#e8edf6}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0c121c;--surface:#131b29;--ink:#e8edf5;--muted:#93a0b5;--line:#243044;--accent:#6c8dff;--accent-ink:#0c121c;--chip:#1b2535}}
+:root[data-theme="dark"]{--bg:#0c121c;--surface:#131b29;--ink:#e8edf5;--muted:#93a0b5;--line:#243044;--accent:#6c8dff;--accent-ink:#0c121c;--chip:#1b2535}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.65 Manrope,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+header{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font-weight:800;text-decoration:none;letter-spacing:-.02em}
+nav ul{display:flex;gap:22px;list-style:none;padding:0;font-size:14px;font-weight:600}
+nav ul a{text-decoration:none;color:var(--muted)}
+nav ul a:hover{color:var(--ink)}
+.hero{padding:88px 0 56px}
+.status{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--muted);border:1px solid var(--line);background:var(--surface);padding:6px 14px;border-radius:99px}
+.status i{width:8px;height:8px;border-radius:50%;background:#22a05a}
+h1{font-size:clamp(2.6rem,7vw,5rem);line-height:1.02;letter-spacing:-.045em;font-weight:800;margin:24px 0 18px;max-width:14ch}
+.lead{font-size:clamp(1.05rem,2vw,1.3rem);color:var(--muted);max-width:56ch}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.btn{display:inline-block;padding:12px 22px;border-radius:10px;font-weight:700;font-size:15px;text-decoration:none;border:1px solid var(--line);background:var(--surface)}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.trace{display:block;width:100%;height:56px;margin-top:56px;color:var(--accent)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);background:var(--surface);border-radius:14px;margin-top:8px}
+.stats div{padding:22px 24px}
+.stats div+div{border-left:1px solid var(--line)}
+.stats b{display:block;font-size:2rem;letter-spacing:-.03em;line-height:1.1}
+.stats span{font-size:14px;color:var(--muted)}
+section{padding:72px 0;border-top:1px solid var(--line)}
+.grid{display:grid;grid-template-columns:220px 1fr;gap:40px}
+h2{font-size:1.5rem;letter-spacing:-.02em;position:sticky;top:84px;align-self:start}
+h3{font-size:1.1rem;letter-spacing:-.01em;line-height:1.35}
+p+p{margin-top:14px}
+.muted{color:var(--muted)}
+.about .hi{font-size:1.7rem;font-weight:800;letter-spacing:-.03em;line-height:1.2;margin-bottom:6px}
+.about .tag{font-weight:600;margin-bottom:20px}
+.facts{list-style:none;padding:0;margin:0 0 26px;display:grid;gap:10px}
+.facts li{display:flex;gap:12px;padding:14px 16px;background:var(--surface);border:1px solid var(--line);border-radius:12px}
+.facts em{font-style:normal;font-size:1.15rem}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.links a{font-size:14px;font-weight:700;text-decoration:none;padding:8px 14px;border-radius:99px;background:var(--chip)}
+.links a:hover{background:var(--accent);color:var(--accent-ink)}
+.projects{display:grid;gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:24px}
+.card header{all:unset;display:flex;justify-content:space-between;gap:16px;align-items:baseline;margin-bottom:10px}
+.card time{font-size:13px;color:var(--muted);white-space:nowrap}
+.card ul{padding-left:18px;color:var(--muted);display:grid;gap:6px;font-size:15px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin:16px 0 0;padding:0;list-style:none}
+.tags li,.chip{font-size:12.5px;font-weight:600;padding:3px 10px;border-radius:6px;background:var(--chip)}
+.card a.repo{display:inline-block;margin-top:14px;font-size:14px;font-weight:700;color:var(--accent)}
+.more{margin-top:8px;display:grid;gap:8px;font-size:15px;list-style:none;padding:0}
+.more a{font-weight:700;color:var(--accent)}
+.skills{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.skills .card{padding:20px}
+.skills h3{margin-bottom:12px;font-size:1rem}
+.skills .tags{margin:0}
+.tl{list-style:none;padding:0;display:grid;gap:0;border-left:2px solid var(--line);margin-left:6px}
+.tl li{position:relative;padding:0 0 34px 28px}
+.tl li::before{content:"";position:absolute;left:-7px;top:7px;width:12px;height:12px;border-radius:50%;background:var(--accent);border:3px solid var(--bg)}
+.tl time{font-size:13px;color:var(--muted);font-weight:600}
+.tl p{font-size:15px;color:var(--muted)}
+.tl strong{display:block;color:var(--ink);font-size:14px;margin:2px 0 8px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.contact dl{display:grid;grid-template-columns:110px 1fr;gap:10px 16px;margin-bottom:26px}
+.contact dt{color:var(--muted);font-size:14px}
+.contact dd{font-weight:600}
+footer{border-top:1px solid var(--line);padding:28px 0;font-size:14px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+@media (max-width:760px){
+ nav ul{display:none}
+ .grid{grid-template-columns:1fr;gap:20px}
+ h2{position:static}
+ .stats{grid-template-columns:1fr}
+ .stats div+div{border-left:0;border-top:1px solid var(--line)}
+ .skills,.two{grid-template-columns:1fr}
+ .hero{padding-top:56px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head>
-<body>
-
-<header class="site-header">
-  <a class="mark" href="#top">MT</a>
-  <nav>
-    <a href="#about">Hakkımda</a>
-    <a href="#work">Projeler</a>
-    <a href="#stack">Yetenekler</a>
-    <a href="#experience">Deneyim</a>
-    <a href="#education">Eğitim</a>
-    <a href="#contact">İletişim</a>
-  </nav>
-</header>
+<body id="top">
+<header><div class="wrap"><nav>
+<a class="logo" href="#top">Metehan Tırpan</a>
+<ul>
+<li><a href="#about">Hakkımda</a></li><li><a href="#work">Projeler</a></li><li><a href="#stack">Yetenekler</a></li>
+<li><a href="#experience">Deneyim</a></li><li><a href="#education">Eğitim</a></li><li><a href="#contact">İletişim</a></li>
+</ul></nav></div></header>
 
 <main>
+<div class="wrap hero">
+<span class="status"><i></i>Yeni fırsatlara açığım</span>
+<h1>Modelleri ürüne dönüştürüyorum.</h1>
+<p class="lead">Ben Metehan, Yapay Zeka ve Makine Öğrenmesi Mühendisiyim. Elektrik-Elektronik temelimle LLM sistemleri, derin öğrenme ve zaman serisi tahminleri geliştiriyorum.</p>
+<div class="cta"><a class="btn primary" href="#work">Projelere göz at</a><a class="btn" href="#contact">İletişime geç</a></div>
+<svg class="trace" viewBox="0 0 1000 56" preserveAspectRatio="none" aria-hidden="true">
+<path d="M0 28H260l24-20h110l24 40h120l22-20H700" fill="none" stroke="currentColor" stroke-width="2" vector-effect="non-scaling-stroke"/>
+<g fill="currentColor"><circle cx="760" cy="28" r="5"/><circle cx="840" cy="10" r="5"/><circle cx="840" cy="46" r="5"/><circle cx="920" cy="28" r="5"/></g>
+<path d="M765 26L835 12M765 30L835 44M845 12L915 26M845 44L915 30" stroke="currentColor" stroke-width="1.5" vector-effect="non-scaling-stroke" opacity=".6"/>
+</svg>
+<div class="stats">
+<div><b>8.</b><span>Freya × Y Combinator hackathonu, 1.200 takım içinde</span></div>
+<div><b>0,81</b><span>MoodMirror öneri sistemi NDCG skoru</span></div>
+<div><b>%99</b><span>Hibrit DeepFake tespit modeli doğruluğu</span></div>
+</div>
+</div>
 
-  <section id="top" class="section hero">
-    <div class="hero-inner">
-      <h1>Metehan Tırpan</h1>
-      <p class="hero-role">Yapay Zeka ve Makine Öğrenmesi Mühendisi</p>
-      <p class="hero-sub">Elektrik-Elektronik Mühendisi · LLM, RAG ve derin öğrenme</p>
-      <p class="hero-summary">Elektrik-Elektronik Mühendisliği temelinden gelen, LLM tabanlı sistemler, derin öğrenme ve zaman serisi tahminleri geliştiren bir mühendisim. Modelleri yalnızca eğitmekle kalmıyor; FastAPI, Docker ve bulut LLM API'leriyle çalışan, test edilmiş ürünlere dönüştürüyorum.</p>
-      <div class="stat-row">
-        <div class="stat"><span class="num">8.</span><span class="label">Freya × Y Combinator hackathonu, 1.200 takım içinde</span></div>
-        <div class="stat"><span class="num">0.81</span><span class="label">MoodMirror öneri sistemi NDCG skoru</span></div>
-        <div class="stat"><span class="num">%99</span><span class="label">hibrit DeepFake tespit modeli doğruluğu</span></div>
-      </div>
-      
-        <a class="btn btn-primary" href="#work">Projelere göz at</a>
-        <a class="btn btn-ghost" href="#contact">İletişime geç</a>
-      </div>
-    </div>
-  </section>
+<section id="about" class="about"><div class="wrap grid">
+<h2>Hakkımda</h2>
+<div>
+<p class="hi">Merhaba, ben Metehan Tırpan 👋</p>
+<p class="tag">Türkiye’den tutkulu bir Yapay Zeka ve Makine Öğrenmesi Mühendisi</p>
+<ul class="facts">
+<li><em>🔭</em><span>Şu anda <strong>LLM ajanları, sentetik veri</strong> ve elektrikli araç şarj ağları için <strong>LSTM-XGBoost talep tahmini</strong> üzerinde çalışıyorum.</span></li>
+<li><em>⚡</em><span>Eğlenceli bilgi: Hem modeli eğitiyor hem de çalışacağı devreyi (ESP32, STM32, PCB) tasarlıyorum.</span></li>
+<li><em>👨‍💻</em><span>Tüm projelerim <a href="https://github.com/black131"><strong>github.com/black131</strong></a> adresinde.</span></li>
+</ul>
+<p>Elektrik-Elektronik Mühendisliği mezunuyum ve yazılımla donanımın kesiştiği yerde çalışmayı seviyorum. Bir yanda LLM, RAG ve derin öğrenme sistemleri; diğer yanda ESP32 ve STM32 tabanlı gömülü sistemler ile TEKNOFEST model uydu ve SİHA takımlarındaki deneyimim var.</p>
+<p>Modelleri yalnızca eğitmekle kalmıyor, FastAPI, Docker ve bulut LLM API’leriyle çalışan, test edilmiş ürünlere dönüştürüyorum. Şu anda bir startup’ta AI/ML Mühendisi olarak çalışıyorum. TÜBİTAK 2209 destekli elektrikli araç şarj ağı projemde talep tahmini yapıyorum; bu çalışma uluslararası bir konferansta kabul edildi.</p>
+<div class="links"><a href="mailto:metehantirpan@gmail.com">E-posta</a><a href="https://github.com/black131">GitHub</a><a href="https://www.linkedin.com/in/LINKEDIN-KULLANICI-ADIN">LinkedIn</a></div>
+</div>
+</div></section>
 
-  <section id="about" class="section">
-    <h2>Hakkımda</h2>
-    <p class="about-text">Elektrik-Elektronik Mühendisliği mezunuyum; yazılımla donanımın kesiştiği yerde çalışmayı seviyorum. Bir yanda LLM, RAG ve derin öğrenme sistemleri, diğer yanda ESP32 ve STM32 tabanlı gömülü sistemler ve TEKNOFEST model uydu ile SİHA takımlarındaki deneyimim var.</p>
-    <p class="about-text">Şu anda bir startup'ta AI/ML Mühendisi olarak çalışıyorum. TÜBİTAK 2209 destekli elektrikli araç şarj ağı projemde LSTM ve XGBoost ile talep tahmini yapıyorum; bu çalışma uluslararası bir konferansta kabul edildi. Sentetik veri, LLM ajanları ve üretim ortamına çıkabilen yapay zeka sistemleri üzerinde çalışmaya devam ediyorum.</p>
-  </section>
+<section id="work"><div class="wrap grid">
+<h2>Öne çıkan projeler</h2>
+<div class="projects">
+<article class="card"><header><h3>Elektrikli araç şarj ağı için LSTM-XGBoost talep tahmini</h3><time>2026</time></header>
+<ul><li>TÜBİTAK 2209 kapsamında şarj istasyonu ağlarında kısa vadeli talep tahmini ve dinamik fiyatlandırma için LSTM ve XGBoost’u birleştiren hibrit bir model geliştirildi.</li>
+<li>Shenzhen şarj verisinde doluluk, hacim, süre, fiyat, komşu bölge ve hava durumu özellikleriyle karşılaştırmalı testler yapıldı; çalışma uluslararası bir konferansta kabul edildi.</li></ul>
+<ul class="tags"><li>Python</li><li>LSTM</li><li>XGBoost</li><li>Zaman serisi</li><li>Özellik mühendisliği</li></ul>
+<a class="repo" href="https://github.com/black131/lstm-xgb-ev-predictor">GitHub deposu</a></article>
 
-  <section id="work" class="section">
-    <h2>Öne Çıkan Projeler</h2>
+<article class="card"><header><h3>Sesli bankacılık asistanı: Freya × Y Combinator “Build the Builder”</h3><time>Ekim 2026</time></header>
+<ul><li>Bir bankanın brief’inden sesli telefon ajanı üreten bir “builder” geliştirildi; ajan 120 testte 71,4 puan aldı ve 1.200 takım arasında 8. oldu.</li>
+<li>Asistan LangChain ve farklı LLM modelleriyle test edildi, JWT erişim kontrolüyle güvence altına alınarak yayına alındı.</li></ul>
+<ul class="tags"><li>Python</li><li>LangChain</li><li>LLM</li><li>Sesli ajan</li><li>JWT</li></ul>
+<a class="repo" href="https://github.com/black131/freya_hachaton_build_the_builder">GitHub deposu</a></article>
 
-    <article class="project">
-      <div class="project-head">
-        <h3>Elektrikli Araç Şarj Ağı için LSTM-XGBoost Talep Tahmini</h3>
-        <span class="project-date">2026</span>
-      </div>
-      <ul class="project-bullets">
-        <li>TÜBİTAK 2209 kapsamında, şarj istasyonu ağlarında kısa vadeli talep tahmini ve dinamik fiyatlandırma için LSTM ve XGBoost'u birleştiren hibrit bir model geliştirildi.</li>
-        <li>Shenzhen şarj verisi üzerinde doluluk, hacim, süre, fiyat, komşu bölge ve hava durumu özellikleriyle diğer modellerle karşılaştırmalı testler yapıldı; çalışma uluslararası bir konferansta kabul edildi.</li>
-      </ul>
-      <p class="project-stack">Python · LSTM · XGBoost · Zaman Serisi · Özellik Mühendisliği</p>
-      <div class="project-links"><a href="https://github.com/black131/lstm-xgb-ev-predictor" target="_blank" rel="noopener">GitHub deposu</a></div>
-    </article>
+<article class="card"><header><h3>MoodMirror: LLM ve semantik anlatım öneri motoru</h3><time>2025–2026</time></header>
+<ul><li>SBERT ve kosinüs benzerliğiyle kullanıcının duygu durumuna uygun anime öneren bir NLP öneri sistemi kuruldu.</li>
+<li>Cold-start sorununu aşmak için hibrit mimari geliştirildi; NDCG 0,81 ve mAP 0,74 değerlerine ulaşıldı.</li></ul>
+<ul class="tags"><li>Python</li><li>BERT / SBERT</li><li>NLP</li><li>Cosine similarity</li></ul>
+<a class="repo" href="https://github.com/black131/Semantic-Similarity-Analysis-Using-BERT-Based-Models">GitHub deposu</a></article>
 
-    <article class="project">
-      <div class="project-head">
-        <h3>Sesli Bankacılık Asistanı — Freya × Y Combinator "Build the Builder"</h3>
-        <span class="project-date">Ekim 2026</span>
-      </div>
-      <ul class="project-bullets">
-        <li>Bir bankanın brief'inden sesli telefon ajanı üreten bir "builder" geliştirildi; ajan 120 testte 71,4 puan aldı ve 1.200 takım arasında 8. oldu.</li>
-        <li>Asistan LangChain ve farklı LLM modelleriyle test edildi, JWT erişim kontrolüyle güvence altına alınarak yayına alındı.</li>
-      </ul>
-      <p class="project-stack">Python · LangChain · LLM · Sesli Ajan · JWT</p>
-      <div class="project-links"><a href="https://github.com/black131/freya_hachaton_build_the_builder" target="_blank" rel="noopener">GitHub deposu</a></div>
-    </article>
+<article class="card"><header><h3>Hibrit derin öğrenme ile DeepFake tespiti</h3><time>2025</time></header>
+<ul><li>Yapay zeka ve insan yapımı görselleri ayırt etmek için ResNet50, Swin Transformer ve Xception modelleri birleştirilerek yeni bir hibrit model oluşturuldu.</li>
+<li>Model %99 doğruluk ve 1 F1 skoru elde etti.</li></ul>
+<ul class="tags"><li>ResNet50</li><li>Swin Transformer</li><li>Xception</li><li>Görüntü sınıflandırma</li></ul>
+<a class="repo" href="https://github.com/black131/DeepFake-Tespiti">GitHub deposu</a></article>
 
-    <article class="project">
-      <div class="project-head">
-        <h3>MoodMirror: LLM ve Semantik Anlatım Öneri Motoru</h3>
-        <span class="project-date">2025 — 2026</span>
-      </div>
-      <ul class="project-bullets">
-        <li>SBERT ve kosinüs benzerliğiyle kullanıcının duygu durumunu anlayıp ona uygun anime öneren bir NLP öneri sistemi kuruldu.</li>
-        <li>Cold-start sorununu aşmak için hibrit mimari geliştirildi; NDCG 0,81 ve mAP 0,74 başarı oranına ulaşıldı.</li>
-      </ul>
-      <p class="project-stack">Python · BERT / SBERT · NLP · Cosine Similarity</p>
-      <div class="project-links"><a href="https://github.com/black131/Semantic-Similarity-Analysis-Using-BERT-Based-Models" target="_blank" rel="noopener">GitHub deposu</a></div>
-    </article>
+<article class="card"><header><h3>Yapay zeka destekli teklif ve sunum otomasyon motoru</h3><time>2026</time></header>
+<ul><li>Müşteri brief’lerinden yapılandırılmış proje teklifi, bütçe taslağı ve slayt içeriği üreten prompt şablonları geliştirildi.</li>
+<li>Veriler JSON formatında yapılandırılıp sunum modüllerine aktarıldı; operasyon ekiplerinin dokümantasyon süresi 3 kat hızlandı.</li></ul>
+<ul class="tags"><li>ChatGPT / Gemini</li><li>Notion AI</li><li>Python</li></ul></article>
 
-    <article class="project">
-      <div class="project-head">
-        <h3>Hibrit Derin Öğrenme ile DeepFake Tespiti</h3>
-        <span class="project-date">2025</span>
-      </div>
-      <ul class="project-bullets">
-        <li>Yapay zeka ve insan yapımı görselleri ayırt etmek için ResNet50, Swin Transformer ve Xception modelleri birleştirilerek yeni bir hibrit model oluşturuldu.</li>
-        <li>Model %99 doğruluk ve 1 F1 skoru elde etti.</li>
-      </ul>
-      <p class="project-stack">Python · ResNet50 · Swin Transformer · Xception · Görüntü Sınıflandırma</p>
-      <div class="project-links"><a href="https://github.com/black131/DeepFake-Tespiti" target="_blank" rel="noopener">GitHub deposu</a></div>
-    </article>
+<div><h3>Diğer GitHub projeleri</h3>
+<ul class="more">
+<li><a href="https://github.com/black131/LLM-Projects">LLM-Projects</a> – Torch ve CUDA ile araba markalarını analiz eden LLM projesi, %85 doğruluk.</li>
+<li><a href="https://github.com/black131/Deep_Learning_Projects">Deep_Learning_Projects</a> – Transfer learning, CNN, RNN, nesne takibi ve stil aktarımı.</li>
+<li><a href="https://github.com/black131/Pv-Battery-Systems-Optimization">Pv-Battery-Systems-Optimization</a> – Yapay Arı Kolonisi ile PV-rüzgar-batarya sistemi boyutlandırma (MATLAB).</li>
+<li><a href="https://github.com/black131/Machine_Learning_Project">Machine_Learning_Project</a> – Makine öğrenmesi ile geliştirilen uygulamalı proje.</li>
+<li><a href="https://github.com/black131/C-ile-yapay-zeka-projeleri">C-ile-yapay-zeka-projeleri</a> – C++ ile evrişimli sinir ağı projesi.</li>
+</ul></div>
+</div>
+</div></section>
 
-    <article class="project">
-      <div class="project-head">
-        <h3>Yapay Zeka Destekli Teklif ve Sunum Otomasyon Motoru</h3>
-        <span class="project-date">2026</span>
-      </div>
-      <ul class="project-bullets">
-        <li>Müşteri brief'lerinden dinamik olarak yapılandırılmış proje teklifi, bütçe taslağı ve slayt içeriği üreten sistematik prompt şablonları geliştirildi.</li>
-        <li>Ham veriler JSON formatında yapılandırılıp sunum modüllerine aktarıldı; operasyon ekiplerinin dokümantasyon süresi 3 kat hızlandırıldı.</li>
-      </ul>
-      <p class="project-stack">ChatGPT / Gemini · Notion AI · Python</p>
-    </article>
+<section id="stack"><div class="wrap grid">
+<h2>Yetkinlikler ve araçlar</h2>
+<div class="skills">
+<div class="card"><h3>Yapay zeka ve makine öğrenmesi</h3><ul class="tags"><li>PyTorch</li><li>CUDA</li><li>BERT / SBERT</li><li>CNN</li><li>LSTM</li><li>XGBoost</li><li>Zaman serisi</li><li>Anomali tespiti</li><li>Sentetik veri</li></ul></div>
+<div class="card"><h3>LLM ve ajan sistemleri</h3><ul class="tags"><li>RAG</li><li>Embedding</li><li>Vektör veritabanı</li><li>LangChain</li><li>Bulut LLM API’leri</li><li>Few-Shot</li><li>CoT</li></ul></div>
+<div class="card"><h3>Backend ve otomasyon</h3><ul class="tags"><li>Python</li><li>FastAPI</li><li>REST API</li><li>JWT</li><li>Docker</li><li>Git / GitHub</li><li>n8n</li><li>Airtable</li><li>Webhooks</li></ul></div>
+<div class="card"><h3>Gömülü sistemler ve donanım</h3><ul class="tags"><li>ESP32</li><li>STM32F407</li><li>KiCad</li><li>Altium</li><li>PCB tasarımı</li><li>Telemetri (JSON / UART)</li></ul></div>
+<div class="card"><h3>Üretken yapay zeka araçları</h3><ul class="tags"><li>ChatGPT</li><li>Claude</li><li>Gemini</li><li>Midjourney</li><li>Runway</li><li>Kling</li><li>Pika</li><li>Notion AI</li></ul></div>
+</div>
+</div></section>
 
-    <h3 class="sub-h">Diğer GitHub projeleri</h3>
-    <ul class="repo-list">
-      <li><a href="https://github.com/black131/LLM-Projects" target="_blank" rel="noopener">LLM-Projects</a> — Torch ve CUDA ile araba markalarını analiz eden LLM projesi, %85 doğruluk.</li>
-      <li><a href="https://github.com/black131/Deep_Learning_Projects" target="_blank" rel="noopener">Deep_Learning_Projects</a> — Transfer Learning, CNN, RNN, nesne takibi ve stil aktarımı çalışmaları.</li>
-      <li><a href="https://github.com/black131/Pv-Battery-Systems-Optimization" target="_blank" rel="noopener">Pv-Battery-Systems-Optimization</a> — Yapay Arı Kolonisi algoritmasıyla PV-rüzgar-batarya sisteminin optimal boyutlandırılması (MATLAB).</li>
-      <li><a href="https://github.com/black131/Machine_Learning_Project" target="_blank" rel="noopener">Machine_Learning_Project</a> — Makine öğrenmesi ile geliştirilen uygulamalı proje.</li>
-      <li><a href="https://github.com/black131/C-ile-yapay-zeka-projeleri" target="_blank" rel="noopener">C-ile-yapay-zeka-projeleri</a> — C++ ile geliştirilen evrişimli sinir ağı projesi.</li>
-    </ul>
-  </section>
+<section id="experience"><div class="wrap grid">
+<h2>Deneyim</h2>
+<ol class="tl">
+<li><time>2025 – Günümüz</time><h3>Yapay Zeka ve Makine Öğrenmesi Mühendisi</h3><strong>Mopplsia</strong>
+<p>Çevik (Agile/Scrum) ortamda operasyonel süreçlerin takibini ve teknik iş akışlarının dokümantasyonunu yönetti. Şirket içi bilgi bankası ve raporlama adımlarında LLM tabanlı otomatik özetleme sistemlerini devreye aldı.</p></li>
+<li><time>2025</time><h3>Yazılım ve Entegrasyon Mühendisi</h3><strong>ArcVerda</strong>
+<p>Peyzaj ve tasarım projelerinde iş akışı verimliliğini artırmak için yapay zeka araçları ve algoritmik sistem entegrasyonları gerçekleştirdi. Tasarım ve teknik operasyon ekipleri arasında köprü kurarak süreç iyileştirmesi sağladı.</p></li>
+<li><time>2024 – 2025</time><h3>Yapay Zeka ve Görüntü Analitiği Lideri</h3><strong>TEKNOFEST proje takımları</strong>
+<p>Model uydu ve SİHA takımlarında gerçek zamanlı nesne tespiti, görsel veri akışları ve telemetri ayrıştırma (JSON/UART) süreçlerini optimize etti; yüksek tempolu yarışma teslimlerini ve teknik sunumları yönetti.</p></li>
+</ol>
+</div></section>
 
-  <section id="stack" class="section">
-    <h2>Yetkinlikler ve Araçlar</h2>
-    <div class="spec-columns">
-      <div class="spec-group">
-        <h3>Yapay zeka ve makine öğrenmesi</h3>
-        <ul>
-          <li>PyTorch, CUDA, BERT / SBERT, CNN, LSTM</li>
-          <li>XGBoost, zaman serisi tahmini, anomali tespiti</li>
-          <li>Sentetik veri çalışmaları</li>
-        </ul>
-      </div>
-      <div class="spec-group">
-        <h3>LLM ve ajan sistemleri</h3>
-        <ul>
-          <li>RAG, embedding ve vektör veritabanı</li>
-          <li>LangChain, bulut LLM API'leri</li>
-          <li>İleri düzey prompt tasarımı (Few-Shot, CoT, Rol Odaklı)</li>
-        </ul>
-      </div>
-      <div class="spec-group">
-        <h3>Backend ve otomasyon</h3>
-        <ul>
-          <li>Python, FastAPI, REST API, JWT</li>
-          <li>Docker, Git / GitHub</li>
-          <li>n8n, Airtable, Webhooks</li>
-        </ul>
-      </div>
-      <div class="spec-group">
-        <h3>Gömülü sistemler ve donanım</h3>
-        <ul>
-          <li>ESP32, STM32F407</li>
-          <li>KiCad, Altium ile devre ve PCB tasarımı</li>
-          <li>Telemetri ayrıştırma (JSON / UART)</li>
-        </ul>
-      </div>
-      <div class="spec-group">
-        <h3>Üretken AI araçları</h3>
-        <ul>
-          <li>ChatGPT, Claude, Gemini</li>
-          <li>Midjourney, Runway, Kling, Pika</li>
-          <li>Notion AI</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+<section id="education"><div class="wrap grid">
+<h2>Eğitim ve diller</h2>
+<div class="two">
+<div class="card"><h3>Kırıkkale Üniversitesi</h3><p class="muted">Elektrik ve Elektronik Mühendisliği, Lisans</p></div>
+<div class="card"><h3>Yabancı diller</h3><p class="muted">İngilizce: ileri seviye<br>Almanca: başlangıç<br>Fransızca: başlangıç</p></div>
+</div>
+</div></section>
 
-  <section id="experience" class="section">
-    <h2>İş Deneyimi ve Mühendislik Geçmişi</h2>
-    <ol class="timeline">
-      <li>
-        <p class="tl-date">2025 — Günümüz</p>
-        <p class="tl-role">Yapay Zeka ve Makine Öğrenmesi Mühendisi</p>
-        <p class="tl-org">Mopplsia</p>
-        <p class="tl-desc">Çevik (Agile/Scrum) çalışma ortamında operasyonel süreçlerin takibini ve teknik iş akışlarının dokümantasyonunu yönetti.</p>
-        <p class="tl-desc">Şirket içi bilgi bankası oluşturma ve raporlama adımlarında LLM tabanlı otomatik özetleme sistemlerini devreye aldı.</p>
-      </li>
-      <li>
-        <p class="tl-date">2025</p>
-        <p class="tl-role">Yazılım ve Entegrasyon Mühendisi</p>
-        <p class="tl-org">ArcVerda</p>
-        <p class="tl-desc">Peyzaj ve tasarım projelerinde iş akışı verimliliğini artırmak amacıyla yapay zeka araçları ve algoritmik sistem entegrasyonları gerçekleştirdi.</p>
-        <p class="tl-desc">Tasarım ve teknik operasyon ekipleri arasında köprü kurarak standartlara uygun doğrulama ve süreç iyileştirmesi sağladı.</p>
-      </li>
-      <li>
-        <p class="tl-date">2024 — 2025</p>
-        <p class="tl-role">Yapay Zeka ve Görüntü Analitiği Lideri</p>
-        <p class="tl-org">TEKNOFEST Proje Takımları</p>
-        <p class="tl-desc">Model uydu ve SİHA takımlarında gerçek zamanlı nesne tespiti, görsel veri akışları ve telemetri ayrıştırma (JSON/UART) süreçlerini optimize etti.</p>
-        <p class="tl-desc">Sistemik sorun çözme, yüksek tempolu yarışma teslimleri ve teknik sunum süreçlerini başarıyla yönetti.</p>
-      </li>
-    </ol>
-  </section>
-
-  <section id="education" class="section">
-    <h2>Eğitim ve Yabancı Dil</h2>
-    <div class="spec-columns">
-      <div class="spec-group">
-        <h3>Eğitim</h3>
-        <ul>
-          <li>Kırıkkale Üniversitesi</li>
-          <li>Elektrik ve Elektronik Mühendisliği — Lisans</li>
-        </ul>
-      </div>
-      <div class="spec-group">
-        <h3>Yabancı diller</h3>
-        <ul>
-          <li>İngilizce — İleri Seviye</li>
-          <li>Almanca — Başlangıç</li>
-          <li>Fransızca — Başlangıç</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact" class="section">
-    <h2>İletişim</h2>
-    <div class="titleblock">
-      <div class="tb-row"><span>İsim</span><strong>Metehan Tırpan</strong></div>
-      <div class="tb-row"><span>Rol</span><strong>Yapay Zeka Mühendisi</strong></div>
-      <div class="tb-row"><span>E-posta</span><a href="mailto:metehantirpan@gmail.com">metehantirpan@gmail.com</a></div>
-      <div class="tb-row"><span>Telefon</span><a href="tel:+905350848426">+90 535 084 8426</a></div>
-      <div class="tb-row"><span>GitHub</span><a href="https://github.com/black131" target="_blank" rel="noopener">github.com/black131</a></div>
-      <div class="tb-row"><span>Konum</span><strong>Ankara, Türkiye</strong></div>
-      <div class="tb-row"><span>Durum</span><strong>Yeni fırsatlara açık</strong></div>
-    </div>
-    <a class="btn btn-primary" href="mailto:metehantirpan@gmail.com">E-posta gönder</a>
-  </section>
-
+<section id="contact" class="contact"><div class="wrap grid">
+<h2>İletişim</h2>
+<div>
+<p class="lead" style="margin-bottom:24px">Yeni bir projede, işte veya iş birliğinde birlikte çalışmak için yazabilirsiniz.</p>
+<dl>
+<dt>E-posta</dt><dd><a href="mailto:metehantirpan@gmail.com">metehantirpan@gmail.com</a></dd>
+<dt>Telefon</dt><dd><a href="tel:+905350848426">+90 535 084 8426</a></dd>
+<dt>GitHub</dt><dd><a href="https://github.com/black131">github.com/black131</a></dd>
+<dt>Konum</dt><dd>Ankara, Türkiye</dd>
+<dt>Durum</dt><dd>Yeni fırsatlara açık</dd>
+</dl>
+<a class="btn primary" href="mailto:metehantirpan@gmail.com">E-posta gönder</a>
+</div>
+</div></section>
 </main>
 
-<footer>
-  <span>© 2026 Metehan Tırpan</span>
-  <span>Ankara, Türkiye</span>
-</footer>
-
+<footer><div class="wrap"><span>© 2026 Metehan Tırpan</span><span>Ankara, Türkiye</span></div></footer>
 </body>
 </html>
